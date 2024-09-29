@@ -33,39 +33,94 @@
         main {
             padding: 2rem;
         }
-        .post {
+        .section {
+            margin-bottom: 2rem;
+        }
+        .post, .project, .skill {
             background-color: #fff;
             margin: 1rem 0;
             padding: 1rem;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: #fff;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Portfolio </h1>
+        <h1>Welcome to My Portfolio</h1>
     </header>
     <nav>
         <a href="#home">Home 🏠</a>
-        <a href="#posts">Posts 📝</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
     </nav>
     <main>
-        <section id="home">
+        <section id="home" class="section">
             <h2>Hello World 👋</h2>
-            <p>I will create my portfolio in this space soon. Stay tuned! 🚀</p>
+            <p>I am a passionate data engineer with experience in building scalable data pipelines and working with big data technologies. Stay tuned for more!</p>
         </section>
-        <section id="posts">
-            <h2>Posts 📝</h2>
-            <div class="post">
-                <h3>🎉 Just completed the “AI for Beginners with Python” course by deeplearning.ai! 🚀</h3>
-                <p>This course was a fantastic refresher, and I gained valuable insights into building LLM prompts with variables. This skill has numerous real-world applications, such as resolving data linkage issues using AI. 🌟</p>
-                <p>Highly recommend this course to anyone looking to strengthen their AI and Python skills! 💡</p>
-                <p>Here is my first post on my new personal website I have created using AI.</p>
-                <p><a href="http://youssefhassan.com">youssefhassan.com</a></p>
-                <p>#AI #Python #MachineLearning #DataScience #ContinuousLearning #deeplearningai</p>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>My journey into data engineering started with a fascination for data analysis and problem-solving. I enjoy turning raw data into actionable insights.</p>
+        </section>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skill"><strong>Programming Languages:</strong> Python, SQL, Java</div>
+            <div class="skill"><strong>Data Technologies:</strong> Hadoop, Spark, Kafka, Airflow</div>
+            <div class="skill"><strong>Cloud Platforms:</strong> AWS, Azure</div>
+            <div class="skill"><strong>Tools:</strong> Git, Docker, Jupyter</div>
+        </section>
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3><a href="https://github.com/youssefhass/project1">Project 1</a></h3>
+                <p>Short description of Project 1, technologies used, and its purpose.</p>
             </div>
+            <div class="project">
+                <h3><a href="https://github.com/youssefhass/project2">Project 2</a></h3>
+                <p>Short description of Project 2, technologies used, and its purpose.</p>
+            </div>
+            <!-- Add more projects as needed -->
+        </section>
+        <section id="blog" class="section">
+            <h2>Blog</h2>
+            <p>Coming soon! Stay tuned for my thoughts on data engineering, tutorials, and insights.</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch, feel free to reach out!</p>
+            <form action="#" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" required></textarea><br>
+                <input type="submit" value="Send">
+            </form>
         </section>
     </main>
+    <footer>
+        <p>Connect with me:</p>
+        <a href="https://github.com/youssefhass" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/youssefhass" target="_blank">LinkedIn</a>
+    </footer>
 </body>
 </html>
