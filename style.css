@@ -17,6 +17,45 @@
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Light Mode Variables */
+[data-theme="light"] {
+    --bg-dark: #f5f5f7;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f0f2;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a5a;
+    --text-muted: #7a7a8a;
+    --border-color: #e0e0e5;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 30px rgba(61, 50, 194, 0.15);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(245, 245, 247, 0.8);
+}
+
+[data-theme="light"] .navbar.scrolled {
+    background: rgba(245, 245, 247, 0.95);
+}
+
+[data-theme="light"] .nav-menu {
+    background: rgba(245, 245, 247, 0.98);
+}
+
+[data-theme="light"] .hero::before {
+    background: radial-gradient(circle at 30% 20%, rgba(61, 50, 194, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(23, 187, 252, 0.05) 0%, transparent 50%);
+}
+
+[data-theme="light"] .projects,
+[data-theme="light"] .blog {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-dark) 100%);
+}
+
+[data-theme="light"] .timeline-year::before {
+    border-color: var(--bg-dark);
+}
+
 /* ===== Reset & Base ===== */
 *, *::before, *::after {
     margin: 0;
@@ -157,6 +196,53 @@ img {
     transform: rotate(-45deg) translate(5px, -6px);
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.theme-toggle:hover svg {
+    color: white;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+    display: none;
+}
+
 /* ===== Hero Section ===== */
 .hero {
     min-height: 100vh;
@@ -196,36 +282,54 @@ img {
 }
 
 .hero-greeting {
-    font-size: 1.1rem;
+    display: inline-block;
+    font-size: 1rem;
     color: var(--secondary);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(23, 187, 252, 0.1);
+    border: 1px solid rgba(23, 187, 252, 0.3);
+    border-radius: 50px;
+    letter-spacing: 0.5px;
 }
 
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-primary) 50%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-title .accent {
-    color: var(--primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1.5rem;
+    display: inline-block;
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
-    max-width: 500px;
+    max-width: 520px;
     margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.9;
+    font-weight: 400;
 }
 
 .hero-buttons {
@@ -280,8 +384,8 @@ img {
 }
 
 .hero-avatar {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background: var(--gradient-primary);
     display: flex;
@@ -290,6 +394,43 @@ img {
     position: relative;
     z-index: 1;
     box-shadow: 0 0 60px rgba(61, 50, 194, 0.4);
+    padding: 5px;
+    overflow: hidden;
+}
+
+.hero-avatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 2;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+}
+
+.hero-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, transparent 50%, rgba(10, 10, 15, 0.85) 85%, rgba(10, 10, 15, 1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+[data-theme="light"] .hero-avatar::after {
+    background: radial-gradient(circle at center, transparent 50%, rgba(245, 245, 247, 0.7) 85%, rgba(245, 245, 247, 0.95) 100%);
 }
 
 .avatar-initials {
@@ -391,18 +532,34 @@ img {
 
 .about-text p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 1.5rem;
-    line-height: 1.8;
+    line-height: 1.9;
+}
+
+.about-text p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    background: linear-gradient(120deg, rgba(61, 50, 194, 0.15) 0%, rgba(23, 187, 252, 0.15) 100%);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
 }
 
 .about-intro {
-    font-size: 1.25rem !important;
+    font-size: 1.35rem !important;
     color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    border-left: 3px solid var(--primary);
+    padding-left: 1.25rem;
+    margin-left: 0;
 }
 
 .about-intro strong {
-    color: var(--secondary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
 .about-stats {
@@ -995,12 +1152,8 @@ img {
     }
 
     .hero-avatar {
-        width: 200px;
-        height: 200px;
-    }
-
-    .avatar-initials {
-        font-size: 4rem;
+        width: 220px;
+        height: 220px;
     }
 
     .contact-content {
@@ -1111,12 +1264,8 @@ img {
     }
 
     .hero-avatar {
-        width: 150px;
-        height: 150px;
-    }
-
-    .avatar-initials {
-        font-size: 3rem;
+        width: 180px;
+        height: 180px;
     }
 
     .stat-number {
