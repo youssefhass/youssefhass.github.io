@@ -1,3 +1,31 @@
+// ===== Theme Toggle =====
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (!prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    if (newTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', newTheme);
+    }
+
+    localStorage.setItem('theme', newTheme);
+}
+
+// Initialize theme immediately to prevent flash
+initTheme();
+
 // ===== Section Loader =====
 const sections = [
     { id: 'about-container', file: 'sections/about.html' },
@@ -35,6 +63,12 @@ function initializeAfterLoad() {
     const navLinks = document.querySelectorAll('.nav-link');
     const allSections = document.querySelectorAll('section');
     const contactForm = document.getElementById('contactForm');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // ===== Theme Toggle =====
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
 
     // ===== Mobile Navigation Toggle =====
     hamburger.addEventListener('click', () => {
