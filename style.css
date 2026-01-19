@@ -937,6 +937,30 @@ img {
     border-color: var(--primary);
 }
 
+.blog-embed {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blog-embed iframe {
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.blog-image-full {
+    margin: 1rem 0;
+}
+
+.blog-image-full img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
 .blog-cta {
     text-align: center;
     margin-top: 3rem;
