@@ -188,7 +188,7 @@ function initializeAfterLoad() {
             const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
             // Open email client
-            window.location.href = `mailto:youssefhass@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:contact@youssefhassan.com?subject=${subject}&body=${body}`;
 
             // Show success feedback
             const button = contactForm.querySelector('button[type="submit"]');
